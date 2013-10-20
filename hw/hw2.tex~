@@ -89,6 +89,7 @@ If all parts known were available it may be feasible to construct the two exampl
 
 \item[{\bf (a.)}] Fill out the truth table and timing diagram. Assume all gates have a delay of one time unit. 
 
+
 {\centering
   \includegraphics[scale=0.5, trim = 0mm 0mm 7mm 0mm, clip]{ps_2_timing.png}\par
  }
@@ -97,14 +98,15 @@ If all parts known were available it may be feasible to construct the two exampl
   \begin{tabular}{ c | c | c | c | c | c }
     A & B & C & X & Y & Z\\
   \hline
-  0 & 0 & 0 & a & a & a\\  
-  0 & 0 & 1 & a & a & a\\
-  0 & 1 & 0 & a & a & a\\
-  0 & 1 & 1 & a & a & a\\
-  1 & 0 & 0 & a & a & a\\
-  1 & 0 & 1 & a & a & a\\
-  1 & 1 & 0 & a & a & a\\
-  1 & 1 & 1 & a & a & a\\
+  a & a & a & a & a & a\\  
+  a & a & a & a & a & a\\
+  a & a & a & a & a & a\\
+  a & a & a & a & a & a\\
+  a & a & a & a & a & a\\
+  a & a & a & a & a & a\\
+  a & a & a & a & a & a\\
+  a & a & a & a & a & a\\
+a & a & a & a & a & a\\
   \end{tabular}
   \par
 }
