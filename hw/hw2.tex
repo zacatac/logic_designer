@@ -186,13 +186,95 @@ An addition of a buffer gate between A and the X gate would stall the A signal f
   \centering
   \includegraphics[scale=0.5, trim = 0mm 0mm 7mm 0mm, clip]{ps_2_repress.png}\par
  }
+
+First consider the plac-TetR transcription unit that is repressed by a source of LacI.
 \begin{itemize}
-\item[{\bf (a.)}]
+
+\item[{\bf (a.)}] Find an expression for the concentration of promoter-repressor (dimerized) complex at equilibrium in terms of the constants and the concentration of LacI.
+
+\begin{equation*}
+  \begin{align}
+    \frac{d(plac_1)}{dt} &= 
+    k_{\mbox{on}_{{plac}_1}}[plac_0] - k_{\mbox{off}_{{plac}_1}}[plac_1]\\
+    \frac{d(plac_2)}{dt} &= 
+    k_{\mbox{on}_{{plac}_1}}[plac_1] - k_{\mbox{off}_{{plac}_2}}[plac_2]\\
+    [plac_1] &= \\
+    [plac_2] &= \\
+  \end{align}
+\end{equation*}
+
+\item[{\bf (b.)}] Under what conditions does the above expression contain a Hill-like term?
+
+The above expression will have a Hill-like term whenever there is n-merization of the repressor proteins when they interact with the promoter.
+ 
+With these conditions, plot transfer curves for [plac:LacI$_n$] as a function of [LacI] when the Hill coefficient is n=2, and n=4.
+
+
+{
+ \centering
+  \begin{tikzpicture}
+    \begin{axis}%
+      [
+        height = 7cm,
+        width = 7cm,
+        xlabel ={[LacI]},
+        ylabel ={[plac:LacI$_n$]},
+        xticklabels={,,},
+        yticklabels={,,}
+      ]
+      \addplot%
+          [
+            blue,%
+            mark=none,
+            samples=100,
+            domain=-6:6
+          ]
+          (x,{1/(1+exp(-(0.75)*x))});
+          \addlegendentry{$n=2$};
+          
+          \addplot%
+              [
+                red,%
+                mark=none,
+                samples=100,
+                domain=-6:6
+              ]
+              (x,{1/(1+exp(-2.1*x))});
+              \addlegendentry{$n=4$};
+    \end{axis}
+  \end{tikzpicture}
+}
+
+In what circuits might $n=4$ be more useful than $n=2$ and vice verse?
+
+$n=4$ would be more useful in any circuit where you need more digital response, and you have less concern on the effect of repressor protein production on cell fitness.
+On the other hand, $n=2$ has its place in a system where you want to see a change in the system occur at very small concentration of repressor protein. 
 \end{itemize}
 
-\section*{4. Heat Dissipation in Bacteria}
+Now consider the whole circuit. Assume that repressor-promoter binding is much faster than the other reactions and use the same assumptions made in deriving the Hill equation from above
 
 \begin{itemize}
-\item[(a.)]
+
+\item[{\bf (c.)}] Write differential equations for each species.
+
+\item[{\bf (d.)}] Break the system into 1,3, and 18(?) parts. For each view of the system, briefly summarize the function of each part and list the inputs and outputs.
+
+
+\item[{\bf (e.)}] Say you want to hook up a reporter to the circuit by introducting another plasmid with plac driving GFP. 
+ Qualitatively, how might the repressilator be affected? 
+How might you minimize the interaction between the repressilator/reporter?
+
 \end{itemize}
+
+\newpage
+\section*{4. Simulation Using Parts and Compositors}
+
+\begin{itemize}
+\item[{\bf (a.)}] Simulate the repressilator using the SimPartComposition scripts. 
+Model the repressor-promoter binding as you did in deriving the Hill form. 
+It may be helpful to use the following parameters listed below.
+
+\item[{\bf (b.)}] Are oscillations more likely for high or low values of the following: $n$, $k_{ts}$, and $k_{tl}$?  
+\end{itemize}
+
 \end{document}
