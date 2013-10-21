@@ -170,9 +170,9 @@ An addition of a buffer gate between A and the X gate would stall the A signal f
  
 \begin{equation*}
   \begin{align}
-  \frac{d[A]}{dt}&=\beta - \alpha\\
-  [A] &= \exp^{(\beta-\alpha)t}\\
-  t &= \frac{\ln{\zeta}}{\beta-\alpha}
+  \frac{d[A]}{dt}&=\beta - \alpha[A]\\
+  [A] &= \frac{\beta}{\alpha} + e^{-\alpha t}\\
+  t &= \frac{\ln{(\zeta-\frac{\beta}{\alpha}})}{-\alpha}
   \end{align}
 \end{equation*}
 
@@ -194,14 +194,27 @@ First consider the plac-TetR transcription unit that is repressed by a source of
 
 \begin{equation*}
   \begin{align}
-    \frac{d(plac_1)}{dt} &= 
-    k_{\mbox{on}_{{plac}_1}}[plac_0] - k_{\mbox{off}_{{plac}_1}}[plac_1]\\
-    \frac{d(plac_2)}{dt} &= 
-    k_{\mbox{on}_{{plac}_1}}[plac_1] - k_{\mbox{off}_{{plac}_2}}[plac_2]\\
-    [plac_1] &= \\
-    [plac_2] &= \\
+    plac_0 + 2LacI &\leftrightarrow plac_1 + LacI \leftrightarrow plac_2\\
+    \frac{d[plac_0]}{dt} &= 
+    k_{off_{{plac}_1}}[plac_1] - k_{on_{{plac}_1}}[plac_0][LacI] \\
+    \frac{d[plac_1]}{dt} &= 
+    k_{on_{{plac}_1}}[plac_0][LacI] - k_{off_{{plac}_1}}[plac_1]\\
+    \frac{d[plac_2]}{dt} &= 
+    k_{on_{{plac}_1}}[plac_1][LacI] - k_{off_{{plac}_2}}[plac_2]\\
+    \log{\frac{\frac{[plac_2]}{[plac_{total}]}}{1-\frac{[plac_2]}{[plac_{total}]}}} &=
+    2 * \log{[LacI]}-\log{K_d}\\
   \end{align}
 \end{equation*}
+
+Assumptions: 
+
+$n_H = 2$
+
+Cooperative binding 
+
+$plac_{total}$ is constant
+
+
 
 \item[{\bf (b.)}] Under what conditions does the above expression contain a Hill-like term?
 
@@ -257,13 +270,38 @@ Now consider the whole circuit. Assume that repressor-promoter binding is much f
 
 \item[{\bf (c.)}] Write differential equations for each species.
 
+  \begin{equation*}
+    \begin{align}
+    \frac{d[plac_0]}{dt} &= 
+    k_{off_{{plac}_1}}[plac_1] - k_{on_{{plac}_1}}[plac_0][LacI] \\
+    \frac{d[plac_1]}{dt} &= 
+    k_{on_{{plac}_1}}[plac_0][LacI] - k_{off_{{plac}_1}}[plac_1]\\
+    \frac{d[plac_2]}{dt} &= 
+    k_{on_{{plac}_1}}[plac_1][LacI] - k_{off_{{plac}_2}}[plac_2]\\
+      \frac{d[mTetR]}{dt} &= k_{ts_{mTetR}}([plac_0]+[plac_1]) - k_{deg_{mTetR}}[mTetR]- k_{ts_{plac:nLacI}}[plac_2] \\
+      \frac{d[TetR]}{dt} &= k_{{tl}_{TetR}}[mTetR] - k_{deg_{TetR}}[TetR]
+    \end{align}
+  \end{equation*}
+
+Then the same equations hold for the remaining two subsystems. For subsystem 2, replace plac $\rightarrow$ ptet and TetR $\rightarrow$ cl. Repeat for subsystem 3 replacing plac $\rightarrow$ pr and TetR $\rightarrow$ LacI. For a total of 15 equations.
 \item[{\bf (d.)}] Break the system into 1,3, and 18(?) parts. For each view of the system, briefly summarize the function of each part and list the inputs and outputs.
 
+  \begin{itemize}
+    \item[{\bf One Part:}] For the one part system we have a fluctuating output, and no inputs(besides any inital input). This one part will alternate between 3 states: TetR expression, cl expression, and LacI expression.
+ This alternating output, if fine-tuned, will happen cyclically. 
+   \item[{\bf 3 Parts:}] For the three part system we have 3 repressible promoter / repressor protein pairs. 
+Each of these parts takes as input the repressor protein output of another one of the three parts. In this way the output/input repressor proteins are coupled to make a 3 part system where each part cyclically increases/decreases its repressor protein output.
+   \item[{\bf 18 Parts:}] The 18 part system includes many of the often looked over transient parts of the central dogma. These parts include mRNA for each of the repressor proteins, the 1-(n-1) bound states of each of the repressible promoters, and the biological background that ensures that transcription, and translation occur.
+mRNA takes as input its respective gene as well as RNA polymerase, a(possibly a few) riobosome(s), and the promoter binding site. mRNA then outputs its respective protein. 
 
 \item[{\bf (e.)}] Say you want to hook up a reporter to the circuit by introducting another plasmid with plac driving GFP. 
  Qualitatively, how might the repressilator be affected? 
 How might you minimize the interaction between the repressilator/reporter?
 
+Any LacI molecules in the one plasmid circuit only had one plac site to bind to. 
+Now there are two plac sites that will compete for LacI molecules. 
+This could decrease the repression of TetR, and if the decrese in repression is large enough then the entire system will be in unstable equilibrium.
+ In order to minimize the interaction between the repressilator and the reporter, you could introduce an siRNA at the 3' UTR of TetR that could regulate the expression of GFP orthogonally to the rest of the repressillator system. 
 \end{itemize}
 
 \newpage
