@@ -113,14 +113,40 @@ If all parts known were available it may be feasible to construct the two exampl
 { 
   \centering
   \begin{tikzpicture}
-
-    \draw (0,0) -- (3,0);
-    \draw (0,1) -- (3,1);
-    \draw (0,2) -- (3,2);
-    \draw (0,3) -- (3,3);
-    \draw (0,4) -- (3,4);
-    \draw (0,5) -- (3,5);
-    \draw (0,6) -- (3,6);
+    # Grid
+    \draw[step = 0.5, color=gray, line width=0.5pt] (-0.5,-0.5) grid (12,5);
+    \node at (-0.25,4.75) {A};
+    \node at (-0.25,3.75) {B};
+    \node at (-0.25,2.75) {C};
+    \node at (-0.25,1.75) {X};
+    \node at (-0.25,0.75) {Y};
+    \node at (-0.25,-0.25) {Z};
+    \draw (0,-0.5) -- (0,5);
+    # Initial Phase
+    \draw[line width=2pt] (0,5) -- (3,5);#A
+    \draw[line width=2pt] (0,4) -- (12,4);#B
+    \draw[line width=2pt] (0,3) -- (12,3);#C
+    \draw[line width=2pt] (0,2) -- (3,2);#X
+    \draw[line width=2pt] (0,0.5) -- (3,0.5);#Y
+    \draw[line width=2pt] (0,0) -- (3,0);#Z
+    # Change happens in A
+    \draw[line width=2pt] (3,5) -- (3,4.5);#A
+    \draw[line width=2pt] (3,4.5) -- (12,4.5);#A
+    # No chage recognition till 4
+    \draw[line width=2pt] (3,2) -- (4,2);#X
+    \draw[line width=2pt] (3,0.5) -- (5,0.5);#Y
+    \draw[line width=2pt] (3,0) -- (5,0);#Z
+    # X shuts down
+    \draw[line width=2pt] (4,2) -- (4,1.5);#X
+    \draw[line width=2pt] (4,1.5) -- (12,1.5);#X
+    # Y takes an extra step to react
+    \draw[line width=2pt] (5,0.5) -- (5,1);#Y
+    \draw[line width=2pt] (5,1) -- (12,1);#Y
+    # Z fails
+    \draw[line width=2pt] (5,0) -- (5,-0.5);#Z
+    \draw[line width=2pt] (5,-0.5) -- (6,-0.5);#Z
+    \draw[line width=2pt] (6,-0.5) -- (6,0);#Z
+    \draw[line width=2pt] (6,0) -- (12,0);#Z
  \end{tikzpicture}
 }
 

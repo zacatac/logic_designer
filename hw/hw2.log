@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  20 OCT 2013 16:35
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  20 OCT 2013 17:14
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -910,22 +910,384 @@ File: ps_2_timing.png Graphic file (type png)
 Package pdftex.def Info: ps_2_timing.png used on input line 94.
 (pdftex.def)             Requested size: 290.66396pt x 103.38599pt.
 
+! You can't use `macro parameter character #' in restricted horizontal mode.
+<recently read> ##
+                  
+l.116     #
+            Grid
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+Missing character: There is no G in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no d in font nullfont!
+! You can't use `macro parameter character #' in restricted horizontal mode.
+l.125     #
+            Initial Phase
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+Missing character: There is no I in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no P in font nullfont!
+Missing character: There is no h in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no e in font nullfont!
+! You can't use `macro parameter character #' in restricted horizontal mode.
+<recently read> ##
+                  
+l.126     \draw[line width=2pt] (0,5) -- (3,5);#
+                                                A
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+Missing character: There is no A in font nullfont!
+! You can't use `macro parameter character #' in restricted horizontal mode.
+<recently read> ##
+                  
+l.127     \draw[line width=2pt] (0,4) -- (12,4);#
+                                                 B
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+Missing character: There is no B in font nullfont!
+! You can't use `macro parameter character #' in restricted horizontal mode.
+<recently read> ##
+                  
+l.128     \draw[line width=2pt] (0,3) -- (12,3);#
+                                                 C
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+Missing character: There is no C in font nullfont!
+! You can't use `macro parameter character #' in restricted horizontal mode.
+<recently read> ##
+                  
+l.129     \draw[line width=2pt] (0,2) -- (3,2);#
+                                                X
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+Missing character: There is no X in font nullfont!
+! You can't use `macro parameter character #' in restricted horizontal mode.
+<recently read> ##
+                  
+l.130 ...draw[line width=2pt] (0,0.5) -- (3,0.5);#
+                                                  Y
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+Missing character: There is no Y in font nullfont!
+! You can't use `macro parameter character #' in restricted horizontal mode.
+<recently read> ##
+                  
+l.131     \draw[line width=2pt] (0,0) -- (3,0);#
+                                                Z
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+Missing character: There is no Z in font nullfont!
+! You can't use `macro parameter character #' in restricted horizontal mode.
+l.132     #
+            Change happens in A
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+Missing character: There is no C in font nullfont!
+Missing character: There is no h in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no g in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no h in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no A in font nullfont!
+! You can't use `macro parameter character #' in restricted horizontal mode.
+<recently read> ##
+                  
+l.133     \draw[line width=2pt] (3,5) -- (3,4.5);#
+                                                  A
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+Missing character: There is no A in font nullfont!
+! You can't use `macro parameter character #' in restricted horizontal mode.
+<recently read> ##
+                  
+l.134 ...raw[line width=2pt] (3,4.5) -- (12,4.5);#
+                                                  A
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+Missing character: There is no A in font nullfont!
+! You can't use `macro parameter character #' in restricted horizontal mode.
+l.135     #
+            No chage recognition till 4
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+Missing character: There is no N in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no h in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no g in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no g in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no 4 in font nullfont!
+! You can't use `macro parameter character #' in restricted horizontal mode.
+<recently read> ##
+                  
+l.136     \draw[line width=2pt] (3,2) -- (4,2);#
+                                                X
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+Missing character: There is no X in font nullfont!
+! You can't use `macro parameter character #' in restricted horizontal mode.
+<recently read> ##
+                  
+l.137 ...draw[line width=2pt] (3,0.5) -- (5,0.5);#
+                                                  Y
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+Missing character: There is no Y in font nullfont!
+! You can't use `macro parameter character #' in restricted horizontal mode.
+<recently read> ##
+                  
+l.138     \draw[line width=2pt] (3,0) -- (5,0);#
+                                                Z
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+Missing character: There is no Z in font nullfont!
+! You can't use `macro parameter character #' in restricted horizontal mode.
+l.139     #
+            X shuts down
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+Missing character: There is no X in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no h in font nullfont!
+Missing character: There is no u in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no d in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no w in font nullfont!
+Missing character: There is no n in font nullfont!
+! You can't use `macro parameter character #' in restricted horizontal mode.
+<recently read> ##
+                  
+l.140     \draw[line width=2pt] (4,2) -- (4,1.5);#
+                                                  X
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+Missing character: There is no X in font nullfont!
+! You can't use `macro parameter character #' in restricted horizontal mode.
+<recently read> ##
+                  
+l.141 ...raw[line width=2pt] (4,1.5) -- (12,1.5);#
+                                                  X
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+Missing character: There is no X in font nullfont!
+! You can't use `macro parameter character #' in restricted horizontal mode.
+l.142     #
+            Y takes an extra step to react
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+Missing character: There is no Y in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no k in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no x in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no t in font nullfont!
+! You can't use `macro parameter character #' in restricted horizontal mode.
+<recently read> ##
+                  
+l.143     \draw[line width=2pt] (5,0.5) -- (5,1);#
+                                                  Y
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+Missing character: There is no Y in font nullfont!
+! You can't use `macro parameter character #' in restricted horizontal mode.
+<recently read> ##
+                  
+l.144     \draw[line width=2pt] (5,1) -- (12,1);#
+                                                 Y
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+Missing character: There is no Y in font nullfont!
+! You can't use `macro parameter character #' in restricted horizontal mode.
+l.145     #
+            Z fails
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+Missing character: There is no Z in font nullfont!
+Missing character: There is no f in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no s in font nullfont!
+! You can't use `macro parameter character #' in restricted horizontal mode.
+<recently read> ##
+                  
+l.146 ...\draw[line width=2pt] (5,0) -- (5,-0.5);#
+                                                  Z
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+Missing character: There is no Z in font nullfont!
+! You can't use `macro parameter character #' in restricted horizontal mode.
+<recently read> ##
+                  
+l.147 ...aw[line width=2pt] (5,-0.5) -- (6,-0.5);#
+                                                  Z
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+Missing character: There is no Z in font nullfont!
+! You can't use `macro parameter character #' in restricted horizontal mode.
+<recently read> ##
+                  
+l.148 ...\draw[line width=2pt] (6,-0.5) -- (6,0);#
+                                                  Z
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+Missing character: There is no Z in font nullfont!
+! You can't use `macro parameter character #' in restricted horizontal mode.
+<recently read> ##
+                  
+l.149     \draw[line width=2pt] (6,0) -- (12,0);#
+                                                 Z
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+Missing character: There is no Z in font nullfont!
 [2 <./ps_2_timing.png>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 150.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 179.
  [3]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 150.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 179.
  (./hw2.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 150.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 150.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 179.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 179.
 Package rerunfilecheck Info: File `hw2.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 150.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 179.
  ) 
 Here is how much of TeX's memory you used:
- 22387 strings out of 493315
- 497248 string characters out of 6137904
- 619194 words of memory out of 5000000
- 25408 multiletter control sequences out of 15000+600000
+ 22416 strings out of 493315
+ 497857 string characters out of 6137904
+ 621194 words of memory out of 5000000
+ 25437 multiletter control sequences out of 15000+600000
  12753 words of font info for 47 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
  63i,7n,74p,752b,609s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -938,7 +1300,7 @@ sr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr
 ocal/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/loca
 l/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl10.pfb></usr/local
 /texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on hw2.pdf (3 pages, 162364 bytes).
+Output written on hw2.pdf (3 pages, 163073 bytes).
 PDF statistics:
  72 PDF objects out of 1000 (max. 8388607)
  53 compressed objects within 1 object stream
