@@ -1,0 +1,29 @@
+LOCUS       mutant                   685 bp ds-DNA     linear       07-OCT-2013
+DEFINITION  .
+ACCESSION   
+VERSION     
+SOURCE      .
+  ORGANISM  .
+COMMENT     
+COMMENT     ApEinfo:methylated:1
+FEATURES             Location/Qualifiers
+     misc_feature    join(1..8,10..17,19..382,384..575,577..685)
+                     /label=tetR
+                     /ApEinfo_fwdcolor=cyan
+                     /ApEinfo_revcolor=green
+                     /ApEinfo_graphicformat=arrow_data {{0 1 2 0 0 -1} {} 0}
+                     width 5 offset 0
+ORIGIN
+        1 atgtccagGt tagataaGag taaagtgatt aacagcgcat tagagctgct taatgaggtc
+       61 ggaatcgaag gtttaacaac ccgtaaactc gcccagaagc taggtgtaga gcagcctaca
+      121 ttgtattggc atgtaaaaaa taagcgggct ttgctcgacg ccttagccat tgagatgtta
+      181 gataggcacc atactcactt ttgcccttta gaaggggaaa gctggcaaga ttttttacgt
+      241 aataacgcta aaagttttag atgtgcttta ctaagtcatc gcgatggagc aaaagtacat
+      301 ttaggtacac ggcctacaga aaaacagtat gaaactctcg aaaatcaatt agccttttta
+      361 tgccaacaag gtttttcact agTgaatgca ttatatgcac tcagcgctgt ggggcatttt
+      421 actttaggtt gcgtattgga agatcaagag catcaagtcg ctaaagaaga aagggaaaca
+      481 cctactactg atagtatgcc gccattatta cgacaagcta tcgaattatt tgatcaccaa
+      541 ggtgcagagc cagccttctt attcggcctt gaattCatca tatgcggatt agaaaaacaa
+      601 cttaaatgtg aaagtgggtc cgctgcaaac gacgaaaact acgctttagt agcttaataa
+      661 cactgatagt gctagtgtag atcac   
+//
