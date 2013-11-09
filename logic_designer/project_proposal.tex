@@ -1,0 +1,76 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,textcomp,amssymb,geometry,graphicx,tikz,cancel}
+\usepackage{algpseudocode,algorithm}
+\usepackage[T1]{fontenc}
+\pagenumbering{gobble}
+\title{BIOE 147 - Project Proposal}
+\author{Zack Field, Ryan Tsoi}
+\date{}
+
+\begin{document}
+\maketitle
+
+% \noindent\makebox[\linewidth]{\rule{\paperwidth}{9pt}}
+ 
+ Much of what we have studied in class relies on repressor/activator protein
+ and promoter pairs. We have seen that there is a limit to the size of circuit 
+ that you can construct, due to the lack of a library of orthogonal proteins.
+ While great strides have been made in seeking out new orthogonal repressing/
+ activating proteins, it is worth noting that many of the papers that we
+ review in lecture still use the same 3 promoter/repressor pairs. 
+ It is not a simple task to rationally design our way out of this predicament.
+ Since proteins function is dependent upon structure, and the prediction of 
+ protein structure is a difficult task (to say the least),
+ it would be beneficial to search elsewhere 
+ for a class of molecules that can act as a reliable parts family. 
+
+ It is already well known that RNA 
+ plays a major role in transcriptional, and translational, regulation within 
+ the cell  ~\cite{review}. RNA, unlike protein, has well characterized canonical base pairing 
+ interactions.  These interactions dominate the formation of secondary structure. 
+ Which makes RNA less recalcitrant to rational design than protein ~\cite{howfolds}. Many tools
+ have appeared recently that not only quicly and accurately predict RNA secondary structure,
+ but also predict tertiary structure (e.g. pseudoknots). Most of the published uses of
+ these tools has been focused on thier application to a research topic, rather than
+ the implementation of a broad range methodology and workflow for designing 
+ RNA-based circuits ~\cite{genetic_switchboard}. An article published last year
+ by Keasling's lab states that, with their work, they sought to `establish a foundation for 
+ developing computer-aided design platforms' ~\cite{Keasling_Model-Driven}.
+ With that in mind, we seek to implement a CAD platform for the compilation of
+ biocircuits, that synthesizes the many tools, and techniques that have already
+ been detailed, concerning the modeling of riboregulation. The tool itself will
+ be similar to simple electrical circuit design tools, and will generate
+ algorithmically optimized compositors that can be used to construct a given circuit.
+ As an exmaple of the tool's viability, one of the circuits discussed in class, that
+ was previously implemented with a repressor-protein/promoter methodology, will be 
+ be modeled with a riboregulatory methodology.
+
+\newpage
+  
+\begin{thebibliography}{9}
+
+\bibitem{review}Chappell, J., Takahashi, M. K., Meyer, S., Loughrey, D., Watters
+  , K. E. and Lucks, J.(2013), 
+  The centrality of RNA for engineering gene expression. 
+  Biotechnology Journal. doi: 10.1002/biot.201300018
+
+\bibitem{howfolds}Ignacio Tinoco Jr, Carlos Bustamante, How RNA folds, 
+  Journal of Molecular Biology, Volume 293, Issue 2, 22 October 1999, 
+  Pages 271-281, ISSN 0022-2836, http://dx.doi.org/10.1006/jmbi.1999.3001.
+
+\bibitem{automated_design}Guillermo Rodrigo, Thomas E. Landrain, and Alfonso Jaramillo
+  De novo automated design of small RNA circuits for engineering synthetic riboregulation in living cells
+  PNAS 2012 109 (38) 15271-15276, doi:10.1073/pnas.1203831109
+
+\bibitem{genetic_switchboard}Jarred M. Callura, Charles R. Cantor, and James J. Collins
+  Genetic switchboard for synthetic biology applicationsz
+  PNAS 2012 109 (15) 5850-5855; published ahead of print March 27, 2012, doi:10.1073/pnas.1203808109
+
+\bibitem{Keasling_Model-Driven}Model-Driven Engineering of RNA Devices to Quantitatively Program Gene Expression
+    James M. Carothers, Jonathan A. Goler, Darmawi Juminaga, and Jay D. Keasling
+    Science 23 December 2011: 334 (6063), 1716-1719. [DOI:10.1126/science.1212209]
+
+
+\end{thebibliography}
+
+\end{document}
