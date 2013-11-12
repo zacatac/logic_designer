@@ -33,4 +33,3 @@ class button(pygame.sprite.Sprite):
         else:
             print "Error: buttonType not recognized"
             sys.exit(0)
-    

@@ -94,14 +94,12 @@ class gate(pygame.sprite.Sprite):
                         if self.outSocket.pressed(mouse):
                             return "out"
                         return "main"
-                    
                     else: return False
                 else: return False
             else: return False
         else: return False
     def updateState(self): # interesting aside, I'm pretty sure this whole thing is Turing complete
         timedelay = 50 # actual time delay
-        print self.updateStateDelay
         if self.updateStateDelay >= timedelay:
             self.updateStateDelay = 0
             if self.type == "or":

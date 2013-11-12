@@ -42,11 +42,13 @@ darkgrey = (80,80,80)
        
 def main():
     def drawScreen():   #updates all the gates (and this also sockets and cables), then draws them to the screen.
-        pygame.draw.line(screen, black,(100,0),(100,screensize[1]),2)
+        pygame.draw.line(screen, black,(250,0),(250,screensize[1]),2)
         for Gate in gates:
             Gate.update()
         for creator in creators:
             creator.draw()
+        for button in buttons:
+            button.draw()
     pygame.init()
     screensize = (1200,700)
     screen = pygame.display.set_mode(screensize)
@@ -64,13 +66,14 @@ def main():
     
     for index, creator in enumerate(creators):
         creator.setType(creatorTypes[index])
-        creator.setCords(0,index*50)#creator.rect.height)
+        creator.setCords(75,index*50)#creator.rect.height)
         creator.setScreen(screen)
     
-    compile_button = button()
-    compile_button.setType("compile")
-    compile_button.setCords(0,50) # under the creators
-    compile_button.setScreen(screen)
+    compiler = button()
+    compiler.setType("compile")
+    compiler.setCords(10,len(creatorTypes)*50) # under the creators
+    compiler.setScreen(screen)
+    buttons = [compiler]
 
     running = True
 
