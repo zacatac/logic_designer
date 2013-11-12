@@ -15,7 +15,7 @@ class bulb(pygame.sprite.Sprite):
     def create(self, gateType, mouseCords,screen):
         self.screen = screen
         self.type = gateType
-        self.image, self.rect = load_image(os.getcwd()+"/bulb0.png", -1)
+        self.image, self.rect = load_image(os.getcwd()+"/assets/bulb0.png", -1)
         print self.type," created, cords: ",self.rect.topleft
         self.setCords(mouseCords[0],mouseCords[1])
         socket = Socket()
@@ -51,10 +51,10 @@ class bulb(pygame.sprite.Sprite):
         else: return False
     def updateState(self):
         if self.inSockets[0].state:
-            self.image, self.rect = load_image(os.getcwd()+"/bulb1.png", -1)
+            self.image, self.rect = load_image(os.getcwd()+"/assets/bulb1.png", -1)
             self.state = True
         else:
-            self.image, self.rect = load_image(os.getcwd()+"/bulb0.png", -1)
+            self.image, self.rect = load_image(os.getcwd()+"/assets/bulb0.png", -1)
             self.state = False
         self.rect.topleft = self.cords
     def update(self):

@@ -27,9 +27,9 @@ class button(pygame.sprite.Sprite):
     def setType(self, buttonType):
         self.type = buttonType
         if self.type == "compile":
-            self.image, self.rect = load_image(os.getcwd()+"/"+self.type+'.png', -1)
+            self.image, self.rect = load_image(os.getcwd()+"/assets/"+self.type+'.png', -1)
         elif self.type == "reset":
-            self.image, self.rect = load_image(os.getcwd()+"/ "+self.type+'.png',-1)
+            self.image, self.rect = load_image(os.getcwd()+"/assets/ "+self.type+'.png',-1)
         else:
             print "Error: buttonType not recognized"
             sys.exit(0)

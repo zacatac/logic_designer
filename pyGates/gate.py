@@ -24,7 +24,7 @@ class gate(pygame.sprite.Sprite):
     def create(self, gateType, mouseCords,screen):
         self.screen = screen
         self.type = gateType
-        self.image, self.rect = load_image(os.getcwd()+"/"+gateType+'.png', -1)
+        self.image, self.rect = load_image(os.getcwd()+"/assets/"+gateType+'.png', -1)
         print self.type," created, cords: ",self.rect.topleft
         self.setCords(mouseCords[0],mouseCords[1])
         if gateType == "not": #for a not gate, we only create one input socket.
@@ -99,7 +99,7 @@ class gate(pygame.sprite.Sprite):
             else: return False
         else: return False
     def updateState(self): # interesting aside, I'm pretty sure this whole thing is Turing complete
-        timedelay = 50 # actual time delay
+        timedelay = 25 # actual time delay
         if self.updateStateDelay >= timedelay:
             self.updateStateDelay = 0
             if self.type == "or":
