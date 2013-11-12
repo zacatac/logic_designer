@@ -13,7 +13,6 @@ A simple Logic Gate simulator.
 
 www.home.in.tum.de/~dowling/ 
 
-
 by Philipp Dowling, Technische Universität München 2011
 
 """
@@ -31,6 +30,7 @@ from Socket import Socket
 from gate import gate
 from switch import switch
 from bulb import bulb
+from button import button
 
 green = (50, 210, 50)
 white = (255,255,255)
@@ -66,6 +66,11 @@ def main():
         creator.setType(creatorTypes[index])
         creator.setCords(0,index*50)#creator.rect.height)
         creator.setScreen(screen)
+    
+    compile_button = button()
+    compile_button.setType("compile")
+    compile_button.setCords(0,50) # under the creators
+    compile_button.setScreen(screen)
 
     running = True
 
