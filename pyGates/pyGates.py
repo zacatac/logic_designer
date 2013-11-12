@@ -121,7 +121,10 @@ def main():
                             Gate.setCords(mouse[0]+offset[0],mouse[1]+offset[1])
                             drawScreen()
                             pygame.display.flip()
-        
+                for b in buttons:
+                    if b.pressed(mouse):
+                        print "button clicked"
+                        b.setCords(mouse[0],mouse[1]) # Moves top left corner to mouse click 
                 #### FOR THE LOVE OF ALL THAT IS HOLY DO NOT TOUCH THIS NEXT PART #####
                 for Gate in gates:                      #check if gate was clicked
                     ev = pygame.event.get()
