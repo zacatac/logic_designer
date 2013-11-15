@@ -1,0 +1,11 @@
+Authors of rnamovies server.
+See also the files THANKS and ChangeLog.
+
+Dirk Evers
+    designed and implemented rnamovies.
+Alexander Sczyrba
+    added saving in various graphics formats
+Alain Xayaphoummine and Herve Isambert
+    added pseudoknots entanglements and DCSE input formats
+Jan Krueger
+    wrote the Java Applet

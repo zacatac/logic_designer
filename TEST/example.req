@@ -1,0 +1,23 @@
+2977		# random seed
+/home/isambert/KINEFOLDPK/SOURCES/TEST/example.p
+/home/isambert/KINEFOLDPK/SOURCES/TEST/example.e
+/home/isambert/KINEFOLDPK/SOURCES/TEST/example.rnm
+/home/isambert/KINEFOLDPK/SOURCES/TEST/example.rnms
+/home/isambert/KINEFOLDPK/SOURCES/TEST/example.rnml
+/home/isambert/KINEFOLDPK/SOURCES/TEST/example.rnm2
+/home/isambert/KINEFOLDPK/SOURCES/TEST/example.dat
+0		# 0=RNA ; 1=DNA
+6.3460741	# helix minimum free energy in kcal/mol: 6.3460741=10kT
+10000000	# NA
+1000		# folding time requested in msec
+1		# pseudoknots   1=yes 0=no 
+0		# entanglements	1=yes 0=no
+2 3		# simulation type: 1=renaturation; 2 20=cotrans. @ 20msec/nt 
+		# add T i j k or F i j k options here 
+
+example
+example.zip
+<SEQNAME>example_2977
+<BASE>example
+<SEQUENCE>GGAGUCGGACGGAUCGUCGCCcCGGGGGCAACUCCGGGGAGGAAAGUCCGGGCUCCAAAGGGCAGAACGCUGGAUAACAUCCAGGGAGGGCAACCUCCGGACAGCGCCACAGAAAGCAAACCGCCCGGCCUCGGCCGGGUAAGGGUGAAACGGUGGUGUAAGAGACCACCAGAUGCCGUGGUGACACGG
+<ZIPFILE>example.zip

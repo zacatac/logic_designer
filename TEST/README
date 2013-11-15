@@ -1,0 +1,39 @@
+
+-------------------------------------------------------------------------------
+See example.req for input parameters and edit path and sequence data (max600nt) in example.req, example.dat and makeplot_example.pl as you wish.
+
+Kinefold static executable can be run as follows:
+
+./kinefold_long_static example.req  
+
+./kinefold_long_static example.req -alarm=600 (aborts simulation after xxx sec)
+ 
+
+./kinefold_long_static example.req -noprint   (to avoid blabla) 
+
+./kinefold_long_static example.req -alarm=86400 -noprint 
+						(a 24h run at the longest)
+
+results are posted 
+1) in .rnm and .rnm2 files which are read by viewrnamovies_kinefold6:
+./viewrnamovies_kinefold6 example.rnm
+you need to add the libforms.so.0.89 file in the appropriate library
+directory, eg /usr/lib
+(or install RNAMOVIES sources from rnamovies-1.2-src.tar.gz)
+
+2)in the .e file which is the input of makeplot to generate trace pictures:
+perl makeplot_example.pl example  
+
+-------------------------------------------------------------------------------
+
+
+Herve Isambert, CNRS (PhD)
+RNA dynamics and Biomolecular Systems.
+UMR168 Institut Curie - Section Recherche,
+11, rue P. et M. Curie, 75005 Paris, France.
++33 1 42 34 64 74 / 67 73
+herve.isambert@curie.fr
+http://kinefold.curie.fr
+--------------------------------------------------------
+
+

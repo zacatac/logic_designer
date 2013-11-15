@@ -1,0 +1,24 @@
+rnamovies THANKS file
+
+rnamovies has originally been written by Dirk Evers.
+Many people have further contributed to RNA Movies by reporting problems, 
+suggesting various improvements, or submitting actual code. Here is
+a list of these people. Help me keep it complete and exempt of errors.
+
+The author would like to thank Gerhard Steger and his colleagues at the
+Institute for Physical Biology, Heinrich-Heine University Duesseldorf for
+many stimulating discussions on structure formation and Marc Rachen for his
+data on PSTVd. Marc Rehmsmeier of the DKFZ-Heidelberg provided me with the
+minimal energy paths for L. collosoma.
+
+Part of the source code (saving in different formats) was written by
+Alexander Sczyrba (now Rockefeller University New York).
+
+Christian Zybill encouraged Dirk to rewrite the parser for large input files
+and to provide a Macintosh version.
+
+The work presented here (mainly my time) was partially supported by the
+German Ministry for Education and Sciences (BMBF), the Ministry of Science
+of North Rhine Westphalia (MWF-NRW) and the German Research Council
+Graduate Programme on structure formation (DFG-GK "Strukturbildungsprozesse").
+

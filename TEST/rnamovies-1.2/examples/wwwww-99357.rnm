@@ -1,0 +1,20 @@
+< wwwww 
+CAUGCCGUACGACUGCUAGCGGUAUAUAUGACACGUCGUCCGGGAUCAUCAUCAUGUGAUGCAUCG
+ C A U G C C G U A C G A C U G C U A G C G G U A U A U A U G A C A C G U C G U C C G G G[A U C A U]C A U C A U[G U G A U]G C A U C G        |         -3.0 kcal/mol reached after  0.0 ms and    1 transitions  (seed=97024)        #  
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -15 - - - - - - - - - -15'- - - - - - - - - H    Helix numbering
+ C A U G C C G U A C G A C U G C U A[G C G G U A]U A U A U G[A C A C G U]C G U C C G G G[A U C A U]C A U C A U[G U G A U]G C A U C G        |         -7.4 kcal/mol reached after  0.0 ms and    2 transitions  (seed=97024)        #  
+ - - - - - - - - - - - - - - - - - - -5- - - - - - - - - - - -5' - - - - - - - - - - - - -15 - - - - - - - - - -15'- - - - - - - - - H    Helix numbering
+ C A U G C C G U A C G A C[U G C]U A[G C G G U A]U A U A U G[A C A C G U]C G U C C G G G[A U C A U]C A U C A U[G U G A U^G C A]U C G        |         -8.9 kcal/mol reached after  0.0 ms and    3 transitions  (seed=97024)        #  
+ - - - - - - - - - - - - - -20 - - - -5- - - - - - - - - - - -5' - - - - - - - - - - - - -15 - - - - - - - - - -15'- - - -20'- - - - H    Helix numbering
+ C A U G[C C G]U A C G A C[U G C]U A[G C G G U A]U A U A U G[A C A C G U]C G U C[C G G]G[A U C A U]C A U C A U[G U G A U^G C A]U C G        |         -10.1 kcal/mol reached after  0.0 ms and    4 transitions  (seed=97024)        # 10  
+ - - - - -10 - - - - - - - -20 - - - -5- - - - - - - - - - - -5' - - - - - - - - -10'- - -15 - - - - - - - - - -15'- - - -20'- - - - H    Helix numbering
+ C A U G[C C G]U[A C G A C^U G C]U A G C[G G U A]U A U A U G[A C A C^G U C G U]C[C G G]G[A U C A U]C A U C A U[G U G A U^G C A]U C G        |         -10.3 kcal/mol reached after  0.0 ms and    5 transitions  (seed=97024)        # 20  
+ - - - - -10 - - -6- - - - -20 - - - - - -5- - - - - - - - - -5' - - -6' - - - - -10'- - -15 - - - - - - - - - -15'- - - -20'- - - - H    Helix numbering
+ C A U G[C C G]U[A C G A C]U G C U A G C[G G U A]U A U A U G[A C A C^G U C G U]C[C G G]G[A U C A U]C A U C A U[G U G A U]G C A U C G        |         -11.9 kcal/mol reached after  0.0 ms and    6 transitions  (seed=97024)        #  
+ - - - - -10 - - -6- - - - - - - - - - - -5- - - - - - - - - -5' - - -6' - - - - -10'- - -15 - - - - - - - - - -15'- - - - - - - - - H    Helix numbering
+ C A U G[C C G]U[A C G A C]U G C U A G C[G G U A]U A U A U G[A C A C^G U C G U]C[C G G]G A U[C A U C A U]C A U[G U G A U G]C A U C G        |         -12.8 kcal/mol reached after  1.5 ms and  107 transitions  (seed=97024)        #  
+ - - - - -10 - - -6- - - - - - - - - - - -5- - - - - - - - - -5' - - -6' - - - - -10'- - - - -16 - - - - - - - -16'- - - - - - - - - H    Helix numbering
+ C[A U G C C G U^A C G A C]U G C U A[G C G G U A U]A U A U G A C A C[G U C G U]C C G G G[A U C A U]C A U C A U[G U G A U]G C A U C G        |         -14.5 kcal/mol reached after 59.8 ms and 3204 transitions  (seed=97024)        # 6  
+ - -3- - - - - - -6- - - - - - - - - -3' - - - - - - - - - - - - - - -6' - - - - - - - - -15 - - - - - - - - - -15'- - - - - - - - - H    Helix numbering
+ C[A U G C C G U^A C G A C]U G C U A[G C G G U A U]A U A U G A C A C[G U C G U]C C G G G A U[C A U C A U]C A U[G U G A U G]C A U C G        |         -15.4 kcal/mol reached after 69.8 ms and 3383 transitions  (seed=97024)        # 6  
+ - -3- - - - - - -6- - - - - - - - - -3' - - - - - - - - - - - - - - -6' - - - - - - - - - - -16 - - - - - - - -16'- - - - - - - - - H    Helix numbering
