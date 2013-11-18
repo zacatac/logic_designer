@@ -31,6 +31,7 @@ from gate import gate
 from switch import switch
 from bulb import bulb
 from button import button
+from compile import print_circuit as pc, print_parts as pp
 
 green = (50, 210, 50)
 white = (255,255,255)
@@ -123,8 +124,9 @@ def main():
                             pygame.display.flip()
                 for b in buttons:
                     if b.pressed(mouse):
-                        print "button clicked"
-                        b.setCords(mouse[0],mouse[1]) # Moves top left corner to mouse click 
+                        print "%s clicked" %b
+                        if b.type == 'compile':
+                            pc(gates)
                 #### FOR THE LOVE OF ALL THAT IS HOLY DO NOT TOUCH THIS NEXT PART #####
                 for Gate in gates:                      #check if gate was clicked
                     ev = pygame.event.get()

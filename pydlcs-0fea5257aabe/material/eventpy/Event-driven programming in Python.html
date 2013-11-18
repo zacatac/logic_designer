@@ -1,0 +1,386 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!-- saved from url=(0045)http://www.emptypage.jp/notes/pyevent.en.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link href="http://www.emptypage.jp/notes/pyevent.html" rel="alternate" hreflang="ja" title="日本語版" lang="ja">
+<title>Event-driven programming in Python</title>
+<style type="text/css">
+<!--
+body { font-family: Georgia, serif; line-height: 1.25; text-align: justify; padding-right: 8%; padding-left: 8%; }
+pre, samp, code  { font-family: Consolas, monospace; font-size: 1.0em; line-height: 1; }
+//samp, code  { white-space: nowrap; }
+a img { border-style: none; }
+cite:lang(ja) { font-style: normal; }
+address:lang(ja) { font-style: normal; }
+em:lang(ja) { font-style: normal; font-weight: bold; }
+.datestamp { text-align: right; margin-right: 1em; margin-left: 1em; }
+.abstract { margin-right: 2em; margin-left: 2em; }
+.toc li { list-style-type: none; }
+.highlight pre { margin: 0 0.1em; padding: 0.5ex 0.5em; border-width: medium; border-color: silver; border-style: dashed; }
+.highlight .c { color: #228B22; }
+.highlight .sd { color: #8B0000; }
+.highlight .s { color: #8B0000; }
+.highlight .kn { color: blue; }
+.highlight .k { color: blue; }
+-->
+</style>
+</head>
+<body>
+
+<p><a href="http://www.emptypage.jp/">emptypage.jp</a> &gt; <a href="http://www.emptypage.jp/notes/">Notes</a></p>
+
+<h1>Event-driven programming in Python</h1>
+
+<p class="datestamp">March, 2011<br>
+Original: <a href="http://www.emptypage.jp/notes/pyevent.html" hreflang="ja" rel="alternate"><span lang="ja">日本語</span> (Japanese)</a></p>
+
+<div class="abstract">
+<p>The event mechanism in C# is nice. Some people implement the same mechanism in their favorite languages other than C#. You can find a lot of event implementations in Python too; see search results for “c# event python” in Google for instance. This article shows yet another implementation of event mechanism in Python, which is a little bit improved by using an interesting feature of Python, <em>descriptor</em>.</p>
+</div>
+
+<ul class="toc">
+<!--htmlex_CONTENTS H2="" H3="" NOCONTAINER-->
+	<li><a href="http://www.emptypage.jp/notes/pyevent.en.html#prerequisite">Prerequisites</a></li>
+	<li><a href="http://www.emptypage.jp/notes/pyevent.en.html#simple">Simpler implementation</a></li>
+	<li><a href="http://www.emptypage.jp/notes/pyevent.en.html#improved">Improved implementation</a>
+	<ul>
+		<li><a href="http://www.emptypage.jp/notes/pyevent.en.html#download">Download</a></li>
+		<li><a href="http://www.emptypage.jp/notes/pyevent.en.html#improved-usage">Usage</a></li>
+		<li><a href="http://www.emptypage.jp/notes/pyevent.en.html#improved-implementation">Code</a></li>
+		<li><a href="http://www.emptypage.jp/notes/pyevent.en.html#improved-details">Details</a></li>
+	</ul>
+</li>
+	<li><a href="http://www.emptypage.jp/notes/pyevent.en.html#conclusion">Conclusion</a></li>
+	<li><a href="http://www.emptypage.jp/notes/pyevent.en.html#references">References</a>
+	<ul>
+		<li><a href="http://www.emptypage.jp/notes/pyevent.en.html#references-python-event-implementations">Event implementations in Python</a></li>
+		<li><a href="http://www.emptypage.jp/notes/pyevent.en.html#references-python-descriptors">Descriptor</a></li>
+	</ul>
+</li>
+	<li><a href="http://www.emptypage.jp/notes/pyevent.en.html#terms">Terms</a></li>
+	<li><a href="http://www.emptypage.jp/notes/pyevent.en.html#history">History</a></li>
+<!--htmlex_CONTENTS_END-->
+</ul>
+
+
+<h2><a name="prerequisite">Prerequisites</a></h2>
+
+<p>(TODO: Maybe I should explain the C#’s event mechanism and show how wonderful it is. I, however, don't have much time to do that now.)</p>
+
+<h2><a name="simple">Simpler implementation</a></h2>
+
+<p>Let's start with a simple implementation:</p>
+
+<div class="highlight"><pre><span class="c"># event.py (simple)</span>
+
+<span class="k">class</span> <span class="nc">Event</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">handlers</span> <span class="o">=</span> <span class="p">[]</span>
+    
+    <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">handler</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">handlers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">handler</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span>
+    
+    <span class="k">def</span> <span class="nf">remove</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">handler</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">handlers</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">handler</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span>
+    
+    <span class="k">def</span> <span class="nf">fire</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sender</span><span class="p">,</span> <span class="n">earg</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">handler</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">handlers</span><span class="p">:</span>
+            <span class="n">handler</span><span class="p">(</span><span class="n">sender</span><span class="p">,</span> <span class="n">earg</span><span class="p">)</span>
+    
+    <span class="n">__iadd__</span> <span class="o">=</span> <span class="n">add</span>
+    <span class="n">__isub__</span> <span class="o">=</span> <span class="n">remove</span>
+    <span class="n">__call__</span> <span class="o">=</span> <span class="n">fire</span>
+
+</pre></div>
+
+<p>The last 3-line-code enables you to write your code like <code>e += handler</code>, <code>e -= handler</code> and <code>e(earg)</code> instead of <code>e.add(handler)</code>, <code>e.remove(handler)</code> and <code>e.fire(earg)</code>. See Python document about these special methods.</p>
+
+<p>A script which uses this module will be like this:</p>
+
+<div class="highlight"><pre><span class="c">#!/usr/bin/env python</span>
+<span class="sd">"""Sample script which uses event.py (simple). """</span>
+
+<span class="kn">import</span> <span class="nn">event</span>
+
+
+<span class="k">class</span> <span class="nc">Publisher</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c"># Set event object</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">evt_foo</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">Event</span><span class="p">()</span>
+    
+    <span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c"># Call event object with self as a sender</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">evt_foo</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+
+<span class="c"># Event handler may be a function or a instance method etc.</span>
+<span class="c"># Every handler must accept two arguments; a sender and an event-specific </span>
+<span class="c"># parameter.</span>
+<span class="k">def</span> <span class="nf">handle_foo</span><span class="p">(</span><span class="n">sender</span><span class="p">,</span> <span class="n">earg</span><span class="p">):</span>
+    <span class="k">print</span> <span class="s">'foo!'</span>
+
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">'__main__'</span><span class="p">:</span>
+    
+    <span class="n">pub</span> <span class="o">=</span> <span class="n">Publisher</span><span class="p">()</span>
+    <span class="c"># Add event handler</span>
+    <span class="n">pub</span><span class="o">.</span><span class="n">evt_foo</span> <span class="o">+=</span> <span class="n">handle_foo</span>
+    <span class="c"># This will cause Publiser.evt_foo event.</span>
+    <span class="n">pub</span><span class="o">.</span><span class="n">foo</span><span class="p">()</span>
+
+</pre></div>
+
+<p>When you run this script, you’ll get:</p>
+
+<pre class="terminal">C:\...&gt;python event_sample.py
+foo!
+</pre>
+
+<p>That’s OK. How about that? If you are sure that they understand what event mechanism is and how to use our module, that’s totally OK. However, We can point some problems out abount this:</p>
+
+<ol>
+<li>It is hard for users of <code>Publisher</code> to know what kind of event does <code>Publisher</code> fire (and even whether it fires some kinds of events), because all these event stuff is prepered in the <code>__init__</code> method.</li>
+<li>You have to keep in mind that you should give <code>self</code> as the first argument in calling event handlers, like <code>self.evt_foo(self)</code>.</li>
+</ol>
+
+<p>Better documentation may help you though, let’s think more efficient way.</p>
+
+<p>You may pass the sender objects of the events in <code>__init__</code>, to fire events like <code>self.evt_foo()</code>. However, this approach needs codes like <code>self.evt_foo = eventEvent(self)</code> in <code>__init__</code>, so only moves points of the problem.</p>
+
+<p>Another approach: you design a class (e.g. that is called <code>EventPublisher</code>) with a mechanism that fires event, and ask users to subclass it. However, it is not recommended that forcing subclassing upon them. We prefer casual way.</p>
+
+<p>Imagine defining events of a class as just like a methods or properties of that. Is it impossible unless revising the specifications of Python? Well, no, it is possible; think how they implement the Python's <code>property</code> mechanism...</p>
+
+<h2><a name="improved">Improved implementation</a></h2>
+
+<p>Here’s the implementation that avoids the matters above.</p>
+
+<h3><a name="download">Download</a></h3>
+
+<p>You can download the code (<samp>event.py</samp> and a sample script):</p>
+
+<ul>
+<li><a href="http://www.emptypage.jp/download/pyevent.zip">pyevent.zip</a> (Windows, CRLF)</li>
+<li><a href="http://www.emptypage.jp/download/pyevent.tar.gz">pyevent.tar.gz</a> (the other platforms, LF)</li>
+</ul>
+
+<p>I also put the code here below, you don’t have to download it if you won’t.</p>
+
+<h3><a name="improved-usage">Usage</a></h3>
+
+<p>Before event.py, Let’s look at the sample script code which uses it. You will find that the event-related codes are written more declaratively and naturally there:</p>
+
+<div class="highlight"><pre><span class="c">#!/usr/bin/env python</span>
+<span class="sd">"""Sample script which uses event.py (improved). """</span>
+
+<span class="kn">import</span> <span class="nn">event</span>
+
+
+<span class="k">class</span> <span class="nc">Publisher</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    
+    <span class="c"># Set event object in class declaration.</span>
+    <span class="n">evt_foo</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">Event</span><span class="p">(</span><span class="s">'here comes foo'</span><span class="p">)</span>
+    
+    <span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c"># Do some actions and fire event.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">evt_foo</span><span class="p">()</span>
+
+
+<span class="c"># Event handler may be a function or a instance method etc.</span>
+<span class="c"># Every handler must accept two arguments; a sender and an event-specific </span>
+<span class="c"># parameter.</span>
+<span class="k">def</span> <span class="nf">handle_foo</span><span class="p">(</span><span class="n">sender</span><span class="p">,</span> <span class="n">earg</span><span class="p">):</span>
+    <span class="k">print</span> <span class="s">'foo!'</span>
+
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">'__main__'</span><span class="p">:</span>
+    
+    <span class="n">pub</span> <span class="o">=</span> <span class="n">Publisher</span><span class="p">()</span>
+    <span class="c"># Add event handler</span>
+    <span class="n">pub</span><span class="o">.</span><span class="n">evt_foo</span> <span class="o">+=</span> <span class="n">handle_foo</span>
+    <span class="c"># This will cause Publiser.evt_foo event.</span>
+    <span class="n">pub</span><span class="o">.</span><span class="n">foo</span><span class="p">()</span>
+
+</pre></div>
+
+<p>Look at the <code>Publisher</code> class. Now events are members of the class (not of instance). You can easily know what kind of events this class publishes with this way. And you can type less. Aregument of <code>event.Event</code> contains document about the event itself. They are used when user do <code>help(Publisher)</code>.</p>
+
+<p><code>Publisher.evt_foo</code> event should be published when <code>foo</code> method runs, and the code corresponds to this is <code>self.evt_foo()</code>. Calling class member object like a method: event handlers are still called with the <code>Publisher</code> instance as the first argument (Trust me). We should write  publisher object down explicitly in the simpler implementation but we are free from that now. <code>self.evt_foo()</code> may called with an argument such as <code>self.evt_foo(earg)</code>. Event handler function shoud accept two arguments: the publisher object (<code>sender</code>) and the event-defined custom value (<code>earg</code>). <code>None</code> will be passed to <code>earg</code> when you fires event without argument like <code>self.evt_foo()</code>.</p>
+
+<p>I think the improved version looks more suitable for our purpose, doesn’t it?</p>
+
+<p>Result (same as that of the simpler one):</p>
+
+<pre class="terminal">C:\...&gt;python event_sample.py
+foo!
+</pre>
+
+<h3><a name="improved-implementation">Code</a></h3>
+
+<p>Here is the code of our improved event.py. More lines but still less than 100.</p>
+
+<p>You may find some unfamiliar special method names.</p>
+
+<div class="highlight"><pre><span class="c"># event.py (improved)</span>
+
+<span class="k">class</span> <span class="nc">Event</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">doc</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__doc__</span> <span class="o">=</span> <span class="n">doc</span>
+    
+    <span class="k">def</span> <span class="nf">__get__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="n">objtype</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">obj</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span>
+        <span class="k">return</span> <span class="n">EventHandler</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">)</span>
+    
+    <span class="k">def</span> <span class="nf">__set__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+
+<span class="k">class</span> <span class="nc">EventHandler</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">,</span> <span class="n">obj</span><span class="p">):</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">event</span> <span class="o">=</span> <span class="n">event</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">obj</span> <span class="o">=</span> <span class="n">obj</span>
+    
+    <span class="k">def</span> <span class="nf">_getfunctionlist</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        
+        <span class="sd">"""(internal use) """</span>
+        
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">eventhandler</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="o">.</span><span class="n">__eventhandler__</span>
+        <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+            <span class="n">eventhandler</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="o">.</span><span class="n">__eventhandler__</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">return</span> <span class="n">eventhandler</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">event</span><span class="p">,</span> <span class="p">[])</span>
+    
+    <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">):</span>
+        
+        <span class="sd">"""Add new event handler function.</span>
+        
+<span class="sd">        Event handler function must be defined like func(sender, earg).</span>
+<span class="sd">        You can add handler also by using '+=' operator.</span>
+<span class="sd">        """</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">_getfunctionlist</span><span class="p">()</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span>
+    
+    <span class="k">def</span> <span class="nf">remove</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">):</span>
+        
+        <span class="sd">"""Remove existing event handler function.</span>
+        
+<span class="sd">        You can remove handler also by using '-=' operator.</span>
+<span class="sd">        """</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">_getfunctionlist</span><span class="p">()</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span>
+    
+    <span class="k">def</span> <span class="nf">fire</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">earg</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        
+        <span class="sd">"""Fire event and call all handler functions</span>
+        
+<span class="sd">        You can call EventHandler object itself like e(earg) instead of </span>
+<span class="sd">        e.fire(earg).</span>
+<span class="sd">        """</span>
+        
+        <span class="k">for</span> <span class="n">func</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_getfunctionlist</span><span class="p">():</span>
+            <span class="n">func</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">,</span> <span class="n">earg</span><span class="p">)</span>
+    
+    <span class="n">__iadd__</span> <span class="o">=</span> <span class="n">add</span>
+    <span class="n">__isub__</span> <span class="o">=</span> <span class="n">remove</span>
+    <span class="n">__call__</span> <span class="o">=</span> <span class="n">fire</span>
+
+</pre></div>
+
+
+<h3><a name="improved-details">Details</a></h3>
+
+<p>The event objects in the sample script are called like methods, without caller object itself as an argument. How that can be done? Let’s launch Python interpreter and watch behaviour of event.py for a while:</p>
+
+<div class="terminal"><pre>C:\...&gt;python
+Python 2.6.5 (r265:79096, Mar 19 2010, 21:48:26) [MSC v.1500 32 bit (Intel)] on
+win32
+Type "help", "copyright", "credits" or "license" for more information.
+&gt;&gt;&gt; import event
+&gt;&gt;&gt; class C(object):
+...   evt = event.Event('test')
+...
+&gt;&gt;&gt; C.evt
+&lt;event.Event object at 0x00AF4A70&gt;
+&gt;&gt;&gt; c = C()
+&gt;&gt;&gt; c
+&lt;__main__.C object at 0x00AF4A30&gt;
+&gt;&gt;&gt; c.evt
+&lt;event.EventHandler object at 0x00AF4950&gt;
+&gt;&gt;&gt; 
+</pre></div>
+
+<p>You see class member <code>C.evt</code> and instance member <code>c.evt</code> are not the same object (see the IDs of each object are different). We got an <code>event.EventHandler</code> instance in the later case. The role of this object is to bind the instance object and the event object of the class. Every <code>event.EventHandler</code> instance has informations about the instances and the event object. You can see that by doing like this:</p>
+
+<div class="terminal"><pre>&gt;&gt;&gt; c.evt.obj
+&lt;__main__.C object at 0x00AF4A30&gt;
+&gt;&gt;&gt; c.evt.event
+&lt;event.Event object at 0x00AF4A70&gt;
+&gt;&gt;&gt;
+</pre></div>
+
+<p>This is achived by a feature of Python language called <em>descriptor</em>. For instance, you instantiate <code>Foo</code> class and set it as a member of <code>x</code> as <code>x.foo = Foo()</code>. When the <code>Foo</code> instance object is evaluated, is there any way for <code>x.foo</code> to know <code>x</code>, the object which contains itself? Descriptor is the way. In other words, it is the mechanism that enables object to know its context on the code. In the output above, <code>C.evt</code> detects whether its owner is a class object (<code>C</code>) or a instance object (<code>c</code>) and returns different result depending on it.</p>
+
+<p>Our new <code>Event</code> class has a method called <code>__get__</code>. It is a special method for descriptor. When <code>C.evt</code> is evaluated, this method is called as <code>self.__get__(None, C)</code>. And when <code>c.evt</code> is evaluated, this is called like <code>self.__get__(c, C)</code>. On our code, we return <code>event.Event</code> instance itself when the first argument of the method is <code>None</code>, while return <code>EventHandler(self, obj)</code> instance when it is a class instance object.</p>
+
+<p>Standard functions such as <code>property</code>, <code>classmethod</code> and <code>staticmethod</code> are also implemented with using descriptor (they are implemented in C but its inside is the same).</p>
+
+<p>See <a href="http://www.emptypage.jp/notes/pyevent.en.html#references">references</a> below about the details of the descriptor.</p>
+
+<h2><a name="conclusion">Conclusion</a></h2>
+
+<p>As to implementing event mechanism in Python, it is hard with simple approaches to sweep redundancy of the code such as <code>self.evt.fire(self)</code> or <code>self.evt = event.Event(self)</code>. They will require two “<code>self</code>”s  for the caller and the argument or the right value and the left value in the same line. Descriptor prvides the solution. The event implementation with using descriptor is easy to use and free from any redundant coding restriction. I think implementing event mechanism is one of the most suitable cases for the descriptor feature.</p>
+
+<p>Descriptor is not an all-round player but it can be as effective as the specification of the Python language got extended depending on your idea.</p>
+
+<h2><a name="references">References</a></h2>
+
+<h3><a name="references-python-event-implementations">Event implementations in Python</a></h3>
+
+<ul lang="en">
+<li><cite><a href="http://code.activestate.com/recipes/410686-c-style-events-in-python/">C#-Style Events in Python - ActiveState Code</a></cite></li>
+<li><cite><a href="http://www.valuedlessons.com/2008/04/events-in-python.html">Events in Python - Valued Lessons</a></cite></li>
+<li><cite><a href="http://zef.me/823/implementing-c-net-events-in-python">Implementing C#/.NET events in Python - I am Zef</a></cite></li>
+</ul>
+
+<h3><a name="references-python-descriptors">Descriptor</a></h3>
+
+<ul lang="en">
+<li><cite><a href="http://users.rcn.com/python/download/Descriptor.htm">How-To Guide for Descriptors</a></cite></li>
+<li><cite><a href="http://docs.python.org/reference/datamodel.html#implementing-descriptors">3.4.2.2. Implementing Descriptors - Python v2.6.5 documentation</a></cite></li>
+</ul>
+
+<h2><a name="terms">Terms</a></h2>
+
+<p>I thank all the developers and writers who wrote about implementations of event mechanism, descriptor and any other articles and reference codes.</p>
+
+<p>Though I considered the correctness of this article, there may still remain errors or mistakes. I do not guarantee the correctness of the content. Comments are always welcomed. You can keep in touch with me in my <a href="http://www.emptypage.jp/bbs/">guestbook page</a> or e-mail below.</p>
+
+<p><a rel="license" href="http://creativecommons.org/licenses/by/2.1/jp/deed.en"><img src="./Event-driven programming in Python_files/somerights20.gif" alt="Creative Commons License CC BY 2.1" width="88" height="31"></a>
+This article is licensed under the <a rel="license" href="http://creativecommons.org/licenses/by/2.1/jp/deed.en">Creative Commons CC BY License</a>. All the codes on the article are in the public domain.</p>
+
+<h2><a name="history">History</a></h2>
+
+<dl>
+<dt>2011-03-08</dt>
+<dd>English version (this article).</dd>
+
+<dt>2010-04-16</dt>
+<dd>Original (Japanese).</dd>
+</dl>
+
+<p>Copyright 2010-2011 Masaaki Shibata &lt;mshibata at emptypage.jp&gt;</p>
+
+
+
+</body></html>

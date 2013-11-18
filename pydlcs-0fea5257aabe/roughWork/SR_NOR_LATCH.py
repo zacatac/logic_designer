@@ -1,0 +1,20 @@
+class SR_NOR_LATCH (LC) :
+        def __init__ (self, name) :
+                LC.__init__ (self, name)
+                self.S = Connector(self,'A',1)
+                self.R = Connector(self,'B',1)
+                self.Q = Connector(self,'Q',monitor=1)
+                self.Qb = Connector (self,'Qb',monitor=1)
+                self.N1 = Not('N1')
+                self.N2 = Not('N2')
+                self.Or1 = Or('Or1')
+                self.Or2 = Or('Or2')
+                self.N1.A.connect ([self.Or1.C])
+                self.N1.B.connect ([self.Q])
+                self.Q.connect ([self.Or2.A])
+                self.N2.A.connect ([self.Or2.C])
+                self.N2.B.connect ([self.Qb])
+                self.Qb.connect ([self.Or1.B])
+                self.S.connect ([self.Or1.B])
+                self.R.connect ([self.Or2.A])
+
